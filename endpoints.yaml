@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: API Gestión de proyectos - Modulo 2 Lección 2
+  description: |-
+    Creación de una API para la gestión de projectos.
+  version: 1.0.11
+tags:
+  - name: project
+    description: Acceso a todo lo relacionado sobre tus proyectos.
+paths:
+  /projects:
+    put:
+      tags:
+        - project
+      summary: Actualiza un proyecto.
+      description: Actualiza un proyecto.
+      operationId: updateProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                description:
+                  type: string
+                language:
+                  type: string
+                open:
+                  type: boolean
+      responses:
+        200:
+          description: Proyecto actualizado.
+          
+    post:
+      tags:
+        - project
+      summary: Crea un nuevo proyecto.
+      description: Crea un nuevo proyecto.
+      operationId: addProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                description:
+                  type: string
+                language:
+                  type: string
+                open:
+                  type: boolean
+      responses:
+        201:
+          description: Proyecto creado.
+          
+    get:
+      tags:
+        - project
+      summary: Obtiene todos los proyectos.
+      description: Obtiene todos los proyectos.
+      responses:
+        202:
+          description: Lista de proyectos.
+          
+  /projects/{projectId}:
+    get:
+      tags:
+        - project
+      summary: Obtiene un proyecto en base a su id.
+      description: Obtiene un proyecto en base a su id.
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        203:
+          description: Proyecto obtenido por su id.
+          
+  /projects/{projectId}/code:
+    get:
+      tags:
+        - project
+      summary: Obtiene el código de un proyecto.
+      description: Obtiene el código de un proyecto.
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Código del proyecto obtenido.
+          
+  /projects/{projectId}/detail:
+    get:
+      tags:
+        - project
+      summary: Obtiene los detalles de un proyecto.
+      description: Obtiene los detalles de un proyecto.
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        205:
+          description: Detalles del proyecto obtenidos.
+          
+  /projects/{projectId}/users:
+    get:
+      tags:
+        - project
+      summary: Obtiene los usuarios afiliados a un proyecto.
+      description: Obtiene los usuarios afiliados a un proyecto.
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        206:
+          description: Usuarios afiliados al proyecto obtenidos.
+          
+    delete:
+      tags:
+        - project
+      summary: Elimina un proyecto en base a su id.
+      description: Elimina un proyecto en base a su id.
+      parameters:
+        - in: path
+          name: projectId
+          required: true
+          schema:
+            type: integer
+      responses:
+        207:
+          description: Proyecto eliminado por su id.
